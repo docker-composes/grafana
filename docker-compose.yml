@@ -1,0 +1,16 @@
+version: '2.2'
+services:
+  grafana:
+    image: grafana/grafana
+    environment:
+      - GF_SERVER_ROOT_URL=http://127.0.0.1:3000
+      - GF_SECURITY_ADMIN_PASSWORD=123456
+    ports:
+      - 3000:3000
+    networks:
+      - docker-net
+    external_links:
+      - docker-net
+networks:
+  docker-net:
+    external: true
