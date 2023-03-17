@@ -1,12 +1,14 @@
+# 参考文档: https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/
 version: '2.2'
 services:
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana-enterprise:8.2.0
     environment:
-      - GF_SERVER_ROOT_URL=http://127.0.0.1:3000
       - GF_SECURITY_ADMIN_PASSWORD=123456
     ports:
       - 3000:3000
+    volumes:
+      - ./data:/var/lib/grafana
     networks:
       - local-net
     external_links:
